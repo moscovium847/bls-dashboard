@@ -282,42 +282,31 @@
   <div class="hero">
     <p class="hero-kicker">Scientometric Analysis · 2015–2025</p>
     <h1>A Decade of <em>Business Law Scholarship</em> in Law Reviews</h1>
-    <p class="hero-lead">An empirical mapping of topic classification, keyword co-occurrence, and scholarly trends across 3,266 law review articles published between 2015 and 2025.</p>
+    <p class="hero-lead">An empirical mapping of the evolution and scholarly trends of corporate law scholarship published between 2015 and 2025.</p>
     <div class="hero-stats">
       <div><div class="hero-stat-num">3,266</div><div class="hero-stat-label">Total Articles</div></div>
-      <div><div class="hero-stat-num">1,407</div><div class="hero-stat-label">BLS Articles</div></div>
       <div><div class="hero-stat-num">39</div><div class="hero-stat-label">Topic Categories</div></div>
       <div><div class="hero-stat-num">11</div><div class="hero-stat-label">Years Covered</div></div>
     </div>
   </div>
 
   <div class="section-inner">
-    <div class="metric-row">
+    <div class="metric-row" style="grid-template-columns: repeat(2,1fr);">
       <div class="metric-card">
-        <div class="metric-card-label">BLS share (post-2021)</div>
-        <div class="metric-card-value">51.5%</div>
-        <div class="metric-card-sub">Up from 36.3% pre-2021</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-card-label">Peak BLS year</div>
-        <div class="metric-card-value">2022</div>
-        <div class="metric-card-sub">57.0% of articles</div>
+        <div class="metric-card-label">Most frequent topic</div>
+        <div class="metric-card-value" style="font-size:18px; padding-top:4px">Corporate Governance</div>
+        <div class="metric-card-sub">1,416 mentions across the corpus</div>
       </div>
       <div class="metric-card">
         <div class="metric-card-label">Fastest growing topic</div>
-        <div class="metric-card-value" style="font-size:16px; padding-top:4px">Climate / Sustainability</div>
-        <div class="metric-card-sub">+6.1 pp, 2015–20 → 2021–25</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-card-label">Most frequent topic</div>
-        <div class="metric-card-value" style="font-size:16px; padding-top:4px">Corporate Governance</div>
-        <div class="metric-card-sub">1,416 mentions</div>
+        <div class="metric-card-value" style="font-size:18px; padding-top:4px">Climate / Sustainability</div>
+        <div class="metric-card-sub">+6.1 pp, 2015–2020 → 2021–2025</div>
       </div>
     </div>
 
     <div class="chart-block">
       <div class="chart-block-title">Topic composition over time</div>
-      <div class="chart-block-sub">Share of articles per year, top 10 topics. N = 3,253 (excl. 2026 partial year).</div>
+      <div class="chart-block-sub">Share of articles per year, top 10 topics. N = 3,266.</div>
       <div class="tab-row" id="ovTabs">
         <button class="tab-btn active" data-ov="stacked">Stacked area</button>
         <button class="tab-btn" data-ov="line">Line (% share)</button>
@@ -328,9 +317,9 @@
     </div>
 
     <div class="chart-block">
-      <div class="chart-block-title">BLS vs non-BLS article counts by year</div>
-      <div class="chart-block-sub">Bars show raw counts; line shows BLS share of total articles published that year.</div>
-      <div class="chart-wrap" style="height:260px"><canvas id="blsYearChart" role="img" aria-label="BLS and non-BLS article counts by year with BLS share line"></canvas></div>
+      <div class="chart-block-title">Topic prevalence across the full corpus</div>
+      <div class="chart-block-sub">Topics ranked by total number of articles tagged, from most to least prevalent. Each article may carry up to two topic tags.</div>
+      <div class="chart-wrap" style="height:520px"><canvas id="topicPrevChart" role="img" aria-label="Topic prevalence ranked from most to least frequent"></canvas></div>
     </div>
   </div>
 </section>
@@ -340,7 +329,12 @@
   <div class="section-inner">
     <div class="section-header">
       <h2>BLS vs Non-BLS Topic Breakdown</h2>
-      <p>Comparing topic prevalence between Business Law Scholarship articles and non-BLS articles. Bar lengths represent share of articles within each group.</p>
+      <p>Comparing topic prevalence between BLS and non-BLS articles. Bar lengths represent share of articles within each group.</p>
+    </div>
+
+    <div class="chart-block" style="border-left: 3px solid var(--accent); background: var(--accent-light);">
+      <div class="chart-block-title" style="color:var(--accent)">What is Business Law and Society (BLS)?</div>
+      <p style="font-size:14px; color:var(--ink-light); line-height:1.8; margin:0">BLS articles are those that address how business entities interact with, affect, or are shaped by broader societal interests, values, or institutions — particularly where the focus goes beyond firm value maximization or internal governance mechanics. This includes scholarship on corporate social responsibility, environmental and climate obligations, stakeholder welfare, DEI, corporate purpose debates, and social enterprise. Articles focused on traditional corporate law doctrine, governance mechanics, or financial regulation are classified as non-BLS.</p>
     </div>
 
     <div class="metric-row">
@@ -391,7 +385,7 @@
   <div class="section-inner">
     <div class="section-header">
       <h2>Bibliometric Network Map</h2>
-      <p>Force-directed co-occurrence network. Nodes represent topics; edges connect topics that appear together in the same article. Node size = article frequency; edge weight = co-occurrence count.</p>
+      <p>This map shows which topics tend to appear together in the same article. Each circle represents a topic — larger circles indicate topics that appear more frequently across the corpus. The lines connecting them show how often two topics co-occur in a single article; thicker lines mean more articles cover both topics together. Colors indicate four thematic clusters grouping related topics.</p>
     </div>
 
     <div class="chart-block" style="padding-bottom:1rem">
@@ -413,7 +407,7 @@
           <option value="bls">Color by BLS share</option>
         </select>
       </div>
-      <p id="net-hint">Drag nodes · hover for details · click legend to highlight cluster</p>
+      <p id="net-hint">You can drag circles to rearrange the map · Hover over any circle for details · Click a cluster label to highlight that group</p>
       <div style="position:relative">
         <div id="net-tooltip"></div>
         <svg id="netSvg" style="width:100%;display:block;background:transparent;border:1px solid var(--rule);border-radius:4px"></svg>
@@ -427,7 +421,7 @@
   <div class="section-inner">
     <div class="section-header">
       <h2>BLS Tone Analysis: Positive vs. Negative</h2>
-      <p>Among the 1,407 BLS-coded articles, each was classified as taking a positive or negative normative stance toward business law and society. Positive articles argue corporations can or should address social concerns; negative articles critique corporate conduct or argue for regulatory constraint.</p>
+      <p>Among the 1,407 BLS-coded articles, each was classified as taking a positive or negative normative stance toward the relationship between business law and society. Positive articles argue that corporations can or should address social concerns. Negative articles critique corporate conduct on BLS issues, or raise concerns about the scholarly or corporate direction toward an increased focus on BLS.</p>
     </div>
 
     <div class="metric-row">
@@ -468,43 +462,22 @@
   <div class="section-inner">
     <div class="section-header">
       <h2>Methodology</h2>
-      <p>How the corpus was built, coded, and analyzed — with enough detail to evaluate the data's scope and reproducibility.</p>
     </div>
     <div class="method-body">
 
-      <h3>Phase 1 — Corpus construction</h3>
-      <p>The corpus was assembled through parallel boolean searches of Westlaw and Lexis, developed in collaboration with Fordham Law librarians. Both searches targeted law review articles concerning corporate law, corporate governance, business law, corporations, business associations, shareholders, and stakeholders, restricted to U.S. legal educational institution publications between January 1, 2015 and December 31, 2025.</p>
-      <p>Search results were downloaded in batches and consolidated into a master spreadsheet. Metadata fields — publication year, author names, article title, and journal — were cleaned using Excel formulas and standardized for analysis. Articles from 51 journals published by non-U.S. educational institutions or professional organizations (including bar journals, practitioner publications, and foreign law reviews) were excluded from the corpus, removing 407 articles. An additional 119 articles were dropped during coding for falling outside the substantive scope of corporate law — including articles primarily concerned with legal education, general public health, or social issues without a direct corporate law nexus. The final corpus comprises 3,271 articles.</p>
+      <h3>Stage 1 — Data gathering and cleaning</h3>
+      <p>I worked with law librarians to develop and refine Boolean searches in LexisNexis and Westlaw designed to identify corporate law and corporate governance articles. The initial searches generated more than 7,000 results across the two databases. A research assistant manually downloaded those results. We then cleaned the dataset by removing duplicate articles, articles published in non-U.S. journals, articles published in professional or practitioner-oriented journals rather than scholarly law journals, articles outside the scope of corporate law or corporate governance, and student-written notes and comments. After these exclusions, the final corpus contained 3,266 unique articles.</p>
 
-      <h3>Phase 2 — AI-assisted coding with Harvey</h3>
-      <p>Full-text PDFs of all articles were downloaded from Westlaw and Lexis and uploaded into Harvey, an AI legal research platform. A set of structured queries was developed and applied to each article to extract or classify the following variables:</p>
-      <ul>
-        <li><strong>Corporate law determination</strong> — whether the article's primary focus involves corporations as subjects of legal regulation or as institutional actors (binary: Yes / No)</li>
-        <li><strong>BLS classification</strong> — whether Business Law and Society is the central topic, defined as analysis of how law mediates the relationship between business activity and broader societal interests beyond firm value maximization (binary: Yes / No)</li>
-        <li><strong>BLS tone</strong> — for BLS articles, whether the article's normative orientation is positive (corporations as capable actors or solution-providers in addressing social concerns) or negative (corporations as problems requiring constraint or replacement) (binary: Positive / Negative)</li>
-        <li><strong>Topic classification</strong> — up to two topic tags from a controlled vocabulary of 39 categories, assigned based on the article's central analytical focus rather than passing references</li>
-        <li><strong>Bibliographic data</strong> — publishing journal, author names, year of publication, article title, and a two-to-three sentence summary</li>
-      </ul>
-      <p>Due to processing constraints, the full article set was divided into seven batches; all queries were run on each batch independently. Results were downloaded, cleaned, and merged into a single dataset for analysis.</p>
+      <h3>Stage 2 — Manual coding</h3>
+      <p>My research assistant and I manually coded a random subset of 874 articles. We first classified each article into one or two of thirty-five predefined corporate law and governance topic areas. We then coded each article for whether its substantive focus fell within the BLS framework. Articles were coded as "0" if they did not fit the BLS definition and "1" if they did. For articles coded as BLS articles, we also coded the author's treatment of the BLS issue — specifically, whether the article was supportive of or critical of a business-society approach.</p>
 
-      <h3>BLS definition</h3>
-      <p>Business Law Scholarship (BLS) is defined as scholarship that examines how law mediates the relationship between business activity and society — specifically addressing how business entities interact with, affect, or are shaped by broader societal interests, values, or institutions beyond firm value maximization or internal governance mechanics. This includes work on corporate social responsibility, environmental and climate obligations, stakeholder welfare, DEI, corporate purpose debates, and social enterprise. Articles focused on traditional corporate law doctrine, governance mechanics, or financial regulation analyzed solely for efficiency or shareholder value are classified as non-BLS.</p>
-
-      <h3>Topic classification</h3>
-      <p>Each article was assigned up to two topic tags from a controlled vocabulary of 39 categories. Classification required that an article substantively engage with a topic's core concepts — passing references or illustrative examples did not qualify. Where an article addressed more than two topics, the two most analytically central were selected. The full topic list spans:</p>
-      <ul>
-        <li>Corporate Governance, Fiduciary Duties, Corporate Purpose, CSR, Business Ethics, Stakeholder Interests</li>
-        <li>Government Intervention / Regulation, Securities Law / Litigation, Antitrust, Banking / Financial Regulation, Accounting / Compliance, Tax</li>
-        <li>Climate / Sustainability, DEI, Social Enterprise / Benefit Corporation, Rights of Corporations, Social Issues, Public Good</li>
-        <li>Judicial Oversight, State Courts &amp; Statutes, Mergers &amp; Acquisitions, Voting, Bankruptcy, Shareholder Activism</li>
-        <li>Crypto / AI, Startups, LLCs, Contracts / Agreements, Global Perspective, Nonprofits, and others</li>
-      </ul>
-
-      <h3>Bibliometric network</h3>
-      <p>The co-occurrence network was constructed by recording an undirected edge between any two topics that appear together on the same article. Edge weight equals the number of articles in which both topics co-occur. Nodes are sized proportionally to total article frequency. Cluster membership was assigned based on thematic affinity across the four groupings visible in the network map: Corporate Governance &amp; Control, Regulation &amp; Compliance, Stakeholder &amp; Purpose, and Emerging &amp; Niche.</p>
+      <h3>Stage 3 — AI-assisted coding</h3>
+      <p>We used Harvey AI to apply the coding protocol to the full corpus. Harvey allowed us to apply a uniform coding workflow to a large set of documents. We uploaded the articles and ran a workflow that generated structured responses for each document, including the article's corporate law topic, BLS classification, treatment of the BLS issue, author, year, and journal. Harvey returned the results in tabular form, which allowed us to sort, filter, spot-check, and export the data for analysis.</p>
+      <p>To validate the AI-assisted coding, we compared Harvey's classifications against the manually coded subset. The manual coding served as a benchmark for evaluating whether Harvey applied the coding protocol consistently. We then revised the prompts and coding instructions to improve consistency between the manual and AI-assisted coding. The final analysis therefore combines close manual review with AI-assisted coding at scale.</p>
 
       <h3>Limitations</h3>
-      <p>All BLS and topic classifications reflect AI-assisted judgment applied through structured prompts and should be interpreted as an analytical framework rather than ground truth. The dual-tag limit means articles spanning three or more themes are necessarily simplified. Boolean search terms may not capture all relevant scholarship, and coverage depends on the completeness of Westlaw and Lexis databases. The 2026 data represent a partial year and are excluded from multi-year trend analyses.</p>
+      <p>All BLS and topic classifications are based on the researcher's judgment. The dual-tag limit means articles spanning three or more themes may be simplified. Boolean search terms may not capture all relevant scholarship, and coverage depends on the completeness of Westlaw and LexisNexis databases.</p>
+      <p>This page will be updated on an annual basis to reflect new data over time.</p>
 
       <div class="cite-block">
         <strong>How to cite this resource:</strong><br>
@@ -732,24 +705,36 @@ document.getElementById('ovTabs').addEventListener('click', e => {
   buildOvChart(btn.dataset.ov);
 });
 
-// BLS year chart
+// Topic prevalence horizontal bar (overview)
 (function() {
-  const nonBls = TOTALS.map((t,i)=>t-BLS_N[i]);
-  const blsPct = TOTALS.map((t,i)=>+(BLS_N[i]/t*100).toFixed(1));
-  new Chart(document.getElementById('blsYearChart').getContext('2d'), {
+  const ALL_TOPICS = [
+    {t:'Corporate Governance',n:1416},{t:'Gov\'t Intervention / Reg.',n:747},
+    {t:'Judicial Oversight',n:346},{t:'Fiduciary Duties',n:328},
+    {t:'Business Ethics',n:266},{t:'Corporate Purpose',n:256},
+    {t:'Securities Law / Litigation',n:217},{t:'Accounting / Compliance',n:203},
+    {t:'Banking / Financial Reg.',n:191},{t:'Bankruptcy',n:178},
+    {t:'CSR',n:167},{t:'Climate / Sustainability',n:165},
+    {t:'Antitrust',n:150},{t:'Investors / Shareholders',n:146},
+    {t:'Rights of Corporations',n:132},{t:'Contracts / Agreements',n:122},
+    {t:'Stakeholder Interests',n:111},{t:'Shareholder Activism',n:109},
+    {t:'Global Perspective',n:107},{t:'Social Enterprise / Benefit Corp.',n:101},
+    {t:'DEI',n:97},{t:'State Courts & Statutes',n:87},
+    {t:'Crypto / AI',n:87},{t:'Mergers & Acquisitions',n:84},
+    {t:'Tax',n:72},{t:'Voting',n:72},
+    {t:'LLCs',n:53},{t:'Startups',n:33},{t:'Nonprofits',n:33},{t:'Social Issues',n:23}
+  ];
+  const labels = ALL_TOPICS.map(d=>d.t);
+  const vals = ALL_TOPICS.map(d=>d.n);
+  const colors = ALL_TOPICS.map(d => d.n > 300 ? '#1E4D8C' : d.n > 150 ? '#1a6e4a' : '#8B5A1A');
+  new Chart(document.getElementById('topicPrevChart').getContext('2d'), {
     type:'bar',
-    data:{ labels:YEARS, datasets:[
-      {label:'BLS',data:BLS_N,backgroundColor:'#1a6e4a99',borderWidth:0,stack:'s'},
-      {label:'Non-BLS',data:nonBls,backgroundColor:'#C0531D88',borderWidth:0,stack:'s'},
-      {label:'BLS %',data:blsPct,type:'line',borderColor:'#1a6e4a',backgroundColor:'transparent',
-       borderWidth:2,pointRadius:3,pointBackgroundColor:'#1a6e4a',tension:0.3,yAxisID:'y2'},
-    ]},
+    data:{labels, datasets:[{label:'Articles',data:vals,backgroundColor:colors,borderWidth:0}]},
     options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false}},
+      indexAxis:'y',
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.x.toLocaleString()} articles`}}},
       scales:{
-        x:{stacked:true,ticks:{autoSkip:false,maxRotation:0,font:{size:11}},grid:{display:false}},
-        y:{stacked:true,ticks:{font:{size:11}},grid:{color:'rgba(0,0,0,0.06)'}},
-        y2:{position:'right',min:0,max:100,ticks:{callback:v=>v+'%',font:{size:11}},grid:{display:false}},
+        x:{ticks:{font:{size:11}},grid:{color:'rgba(0,0,0,0.06)'}},
+        y:{ticks:{font:{size:10.5}},grid:{display:false}},
       }
     }
   });
@@ -882,16 +867,30 @@ function buildNetwork() {
     });
 
   const label = svg.append("g").selectAll("text").data(nodes.filter(d=>d.freq>70)).join("text")
-    .attr("text-anchor","middle").attr("dy","0.35em")
-    .attr("font-size",d=>Math.min(Math.max(sizeScale(d.freq)*0.42,8),11.5))
-    .attr("font-weight","500").attr("fill","#fff").attr("pointer-events","none")
-    .text(d=>shortLabel(d.id));
+    .attr("text-anchor","middle")
+    .attr("font-size", d => Math.min(Math.max(sizeScale(d.freq)*0.30, 7), 9.5))
+    .attr("font-weight","500").attr("fill","#fff").attr("pointer-events","none");
+
+  label.each(function(d) {
+    const el = d3.select(this);
+    const words = shortLabel(d.id).split(' ');
+    const mid = Math.ceil(words.length/2);
+    const line1 = words.slice(0,mid).join(' ');
+    const line2 = words.slice(mid).join(' ');
+    const fs = Math.min(Math.max(sizeScale(d.freq)*0.30, 7), 9.5);
+    if (line2) {
+      el.append("tspan").attr("x",0).attr("dy",`-${fs*0.6}px`).text(line1);
+      el.append("tspan").attr("x",0).attr("dy",`${fs*1.3}px`).text(line2);
+    } else {
+      el.append("tspan").attr("x",0).attr("dy","0.35em").text(line1);
+    }
+  });
 
   netSim.on("tick",()=>{
     nodes.forEach(d=>{const r=sizeScale(d.freq)+2;d.x=Math.max(r,Math.min(W-r,d.x));d.y=Math.max(r,Math.min(H-r,d.y));});
     link.attr("x1",d=>d.source.x).attr("y1",d=>d.source.y).attr("x2",d=>d.target.x).attr("y2",d=>d.target.y);
     node.attr("cx",d=>d.x).attr("cy",d=>d.y);
-    label.attr("x",d=>d.x).attr("y",d=>d.y);
+    label.attr("transform",d=>`translate(${d.x},${d.y})`);
   });
 }
 
